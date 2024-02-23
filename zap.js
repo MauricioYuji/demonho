@@ -13,13 +13,11 @@
 		textarea = main.querySelector(`div[contenteditable="true"]`)
 
 	if (!textarea) throw new Error("Não há uma conversa aberta")
-
-	console.log(lines);
+	
 	while (true) {
 		if (index > lines.length - 1) {
 			index = 0;
 		}
-		console.log(lines[index])
 
 		textarea.focus();
 		document.execCommand('insertText', false, lines[index]);
@@ -32,8 +30,7 @@
 		index++;
 		if (index !== lines.length) await new Promise(resolve => setTimeout(resolve, 250));
 	}
-
-	return lines.length;
+	
 }
 
 
